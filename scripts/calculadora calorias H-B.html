@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title></title>
+  </head>
+  <body>
+    <p></p>
+    <p></p>
+    <div id="rechner" style="box-shadow: 2px 2px 5px 2px #444444; padding:15px; margin:5px;
+width:360px; border-radius:15px; font-family: Verdana,Arial,'sans-serif'; fontsize:11px;">
+      <h1 style="    margin-top:0;padding-top:0;text-align:center;font-size:15px;font-
+weight:bold"><span style="font-family: Arial;">Calculadora de
+          calorias</span></h1>
+      <hr style="margin-bottom:10px;" size="1" color="silver">
+      <form>
+        <table style="width: 373px; height: 160px; text-align: left; margin-left: auto; margin-right: auto;"
+          border="0">
+          <tbody>
+            <tr>
+              <td style="text-align: left;">Sexo: </td>
+              <td style="width: 22px; text-align: left;"><input id="sexo" value="M"
+                  type="text"> &nbsp;M o F</td>
+            </tr>
+            <tr>
+              <td style="width: 30px; text-align: left;">Peso (Kg):</td>
+              <td style="margin-left: -14px; text-align: left;"><input id="peso"
+                  value="80"><br>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 30px; text-align: left;">Talla (m):</td>
+              <td style="width: 22px; text-align: left;"><input id="talla" value="1.85"></td>
+            </tr>
+            <tr>
+              <td style="text-align: left;">Edad:</td>
+              <td style="text-align: left;"><input id="edad" type="text"></td>
+            </tr>
+          </tbody>
+        </table>
+        &nbsp;<br>
+        <div style="text-align: center;"><input onclick="calculo();" value="Resultado"
+type="button"></div>
+        <br>
+        <div style="text-align: center;">
+          <p id="demo"></p>
+ <script src="./JS/kcal.js"></script>          
+
+
+ <br>
+          <div style="text-align: center;"> </div>
+        </div>
+      </form>
+      <p style="  text-align: right;" size="10"> <a href="www.salnut.com" target="_blank">www.salnut.com</a></p>
+    </div>
+  </body>
+</html>

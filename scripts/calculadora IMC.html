@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title></title>
+  </head>
+  <body>
+    <p></p>
+    <div id="rechner" style="box-shadow: 2px 2px 5px 2px #444444; padding:15px; margin:5px;
+width:360px; border-radius:15px; font-family: Verdana,Arial,'sans-serif'; fontsize:11px;">
+      <h1 style="    margin-top:0;padding-top:0;text-align:center;font-size:15px;font-
+weight:bold"><span style="font-family: Arial;">Calculadora de IMC</span></h1>
+      <hr style="margin-bottom:10px;" size="1" color="silver">
+ <script src="./JS/imc.js"></script>      
+
+
+      <div align="left">
+        <form name="form" id="form" style="margin-left: 5px; width: 290px;">
+          Peso&nbsp;&nbsp; <input name="peso" size="12" type="Text"> Kg
+          <p> Altura <input name="alt" size="12" type="Text"> cm </p>
+          <p style="width: 349px;"> <input name="sexo" value="opção" id="sexo_0"
+              type="radio"> Masculino&nbsp;&nbsp; <label><input name="sexo" value="opção"
+                id="sexo_1" type="radio"> Feminino</label> </p>
+          <div style="text-align: center; width: 338px;"><input style="Padding: 3pt"
+value="Calcular IMC" onclick="calcularIMC()" name="button" type="button"></div>
+          <p style="text-align: center; width: 335px;"><input style="Padding: 3pt"
+value="Limpar Valores" type="reset"></p>
+          <p> Su IMC &nbsp; &nbsp; &nbsp; <input name="massacor" id="massacor"
+              size="12" type="Text"> </p>
+          <p> Diagnóstico <input name="comment" id="comment" size="12" type="Text"></p>
+          <p> Su peso mínimo <input name="PIM" id="PIM" size="4" type="Text">
+            Kg </p>
+          <p> Su peso máximo <input name="PIN" id="PIN" size="4"> Kg</p>
+          <p style="text-align: left;"> Su peso ideal es <input name="PII" id="PII"
+              size="4"> Kg</p>
+          <p> </p>
+        </form>
+        <p style="  text-align: right;" size="10"> <a href="www.salnut.com" target="_blank">www.salnut.com</a></p>
+      </div>
+    </div>
+    <div id="fb-root"></div>
+    <script async="" defer="defer" crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2&appId=289248987810913&autoLogAppEvents=1"></script>
+    <div class="fb-share-button" data-href="http://www.salnut.com/conoce-tu-imc/"
+      data-layout="button" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.salnut.com%2Fconoce-tu-imc%2F&amp;src=sdkpreparse"
+        class="fb-xfbml-parse-ignore">Compartir</a></div>
+  </body>
+</html>

@@ -1,0 +1,652 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Calculadora del percentil del IMC en niños y adolescentes</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="./JS/percentiles/calculator.css">
+    <link rel="stylesheet" type="text/css" href="./JS/percentiles/result.css">
+    <style>
+body {
+	font-size: 1.1em;
+	background-color: #FFFFFF;
+	color: #000000;
+	padding: 1em;
+	padding-right: 1em;
+}
+
+body a, body a:hover {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+
+calculator_form_wrapper, calculator_result_wrapper a, calculator_result_wrapper a:hover {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+#calculator_form_wrapper {
+	overflow-y: auto;
+	max-height:900px;
+	max-width:100%;
+	height:900px;
+	width:100%;
+	padding:1px;
+}
+
+select, input, textarea {
+	color: #000;
+}
+.highlight {
+	background-color: #F0FF06;
+}
+.errorBox {
+	background-color: #5A2971;
+}
+.form_err {
+	color: #FFc0c0;
+}
+</style> </head>
+  <body>
+  <h3 id="widget-title">Calculadora del percentil del IMC en niños y adolescentes</h3>
+                 <div id="calculator_form_wrapper" class="col-md-8" style="width: 600px;">
+          <div class="float-right"> <input checked="checked" id="metric" name="english_metric"
+              value="metric" type="radio"> <label for="metric">Sistema métrico</label>
+            <input id="english" name="english_metric" value="english" type="radio">
+            <label for="english">Sistema inglés</label> </div>
+          <br>
+          <!-- ##########################CALCULATOR FORM####################################- -->
+          <form id="ChildBMI_Form">
+            <p class="form_err" id="all_form_check">❗ Por favor verifique la
+              exactitud de la información que ingresó.</p>
+            <p class="form_err_age_diff" id="age_under_2"><b>La fecha de
+                nacimiento</b> debe ser al menos dos años antes de <b>la fecha
+                de las mediciones</b>. Si el niño tiene menos de dos años, no se
+              puede calcular el IMC. Se recomienda consultar con un profesional
+              de la salud para que le consiga una evaluación médica adicional
+              para su hijo.</p>
+            <p class="form_err_age_diff" id="age_over_20">Según lose valores
+              ingresados para <b>la fecha de nacimiento</b> y <b>la fecha de
+                medición</b>, la edad se calcula a 20 años o más. Esta
+              calculadora solo se puede utilizar si la edad se calcula menos de
+              20 años de edad. Si los valores ingresados están correctos, utlice
+              <a href="/healthyweight/spanish/assessing/bmi/adult_bmi/index.html">el
+                índice de masa corporal para adultos</a>.</p>
+            <div class="linebreak" style="width: 555px;"></div>
+            <div class="radio_buttons">
+              <div class="inline_blk"> <input checked="checked" id="age_y_m" name="age_ym_or_do"
+                  value="age_y_m" type="radio"> <label for="age_y_m">Edad:
+                  años, meses</label> </div>
+              <div class="inline_blk"> <input id="age_do" name="age_ym_or_do" value="age_do"
+                  type="radio"> <label for="age_do">Fecha de nacimiento, fecha
+                  de medición</label> </div>
+            </div>
+            <div id="div_age_y_m">
+              <p><b>Edad:</b> <span class="form_err" id="age_check"> Ingrese
+                  una edad</span></p>
+              <div class="inline_blk"> <input pattern="[0-9]" maxlength="3" name="age_y_direct"
+                  id="age_y_direct" type="text"> <label for="age_y_direct">años
+                  <small>(2 a 19)</small></label> </div>
+              <div class="inline_blk"> <input pattern="[0-9]" maxlength="2" name="age_m_direct"
+                  id="age_m_direct" type="text"> <label for="age_m_direct">meses
+                  <small>(0 a 11)</small></label> </div>
+              <p style="width: 520px;"> o solamente ingrese el número total de
+                meses:</p>
+              <input pattern="[0-9]" maxlength="3" name="age_m_only_direct" id="age_m_only_direct"
+                type="text"> <label for="age_m_only_direct">meses <small>(24 a
+                  239)</small></label> </div>
+            <div id="div_dob_dom">
+              <div id="div_dob">
+                <p><b>Fecha de nacimiento:</b> <span class="form_err" id="dob_check">Ingrese
+                    una fecha</span></p>
+                <label for="dob_month" class="accessibleHide">mes:</label>
+                <select name="dob_month" id="dob_month">
+                  <option selected="selected" value="0">mes</option>
+                  <option value="01">enero</option>
+                  <option value="02">febrero</option>
+                  <option value="03">marzo</option>
+                  <option value="04">abril</option>
+                  <option value="05">mayo</option>
+                  <option value="06">junio</option>
+                  <option value="07">julio</option>
+                  <option value="08">agosto</option>
+                  <option value="09">septiembre</option>
+                  <option value="10">octubre</option>
+                  <option value="11">noviembre</option>
+                  <option value="12">diciembre</option>
+                </select>
+                &nbsp;&nbsp;&nbsp; <label for="dob_day" class="accessibleHide">día:</label>
+                <select name="dob_day" id="dob_day">
+                  <option value="0">día</option>
+                  <option value="01">1</option>
+                  <option value="02">2</option>
+                  <option value="03">3</option>
+                  <option value="04">4</option>
+                  <option value="05">5</option>
+                  <option value="06">6</option>
+                  <option value="07">7</option>
+                  <option value="08">8</option>
+                  <option value="09">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+                &nbsp;&nbsp;&nbsp; <label for="dob_year" class="accessibleHide">año:</label>
+                <select name="dob_year" id="dob_year">
+                  <option value="0">año</option>
+                  <option value="2017">2024</option>
+                  <option value="2017">2023</option>
+                  <option value="2017">2022</option>
+                  <option value="2017">2021</option>
+                  <option value="2017">2020</option>
+                  <option value="2017">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option>
+                  <option value="2012">2012</option>
+                  <option value="2011">2011</option>
+                  <option value="2010">2010</option>
+                  <option value="2009">2009</option>
+                  <option value="2008">2008</option>
+                  <option value="2007">2007</option>
+                  <option value="2006">2006</option>
+                  <option value="2005">2005</option>
+                  <option value="2004">2004</option>
+                  <option value="2003">2003</option>
+                  <option value="2002">2002</option>
+                  <option value="2001">2001</option>
+                  <option value="2000">2000</option>
+                  <option value="1999">1999</option>
+                  <!--option value="1998">1998</option-->
+                </select>
+                &nbsp;&nbsp;&nbsp; </div>
+              <div id="div_dom">
+                <p><b>Fecha de medición:</b> <span class="form_err" id="dom_check">
+                    Ingrese una fecha</span></p>
+                <label for="dom_month" class="accessibleHide">mes:</label>
+                <select name="dom_month" id="dom_month">
+                  <option selected="selected" value="0">mes</option>
+                  <option value="01">enero</option>
+                  <option value="02">febrero</option>
+                  <option value="03">marzo</option>
+                  <option value="04">abril</option>
+                  <option value="05">mayo</option>
+                  <option value="06">junio</option>
+                  <option value="07">julio</option>
+                  <option value="08">agosto</option>
+                  <option value="09">septiembre</option>
+                  <option value="10">octubre</option>
+                  <option value="11">noviembre</option>
+                  <option value="12">diciembre</option>
+                </select>
+                &nbsp;&nbsp;&nbsp; <label for="dom_day" class="accessibleHide">día:</label>
+                <select name="dom_day" id="dom_day">
+                  <option value="0">día</option>
+                  <option value="01">1</option>
+                  <option value="02">2</option>
+                  <option value="03">3</option>
+                  <option value="04">4</option>
+                  <option value="05">5</option>
+                  <option value="06">6</option>
+                  <option value="07">7</option>
+                  <option value="08">8</option>
+                  <option value="09">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+                &nbsp;&nbsp;&nbsp; <label for="dom_year" class="accessibleHide">Año:</label>
+                <select name="dom_year" id="dom_year">
+                  <option value="0">año</option>
+                  <option value="2017">2024</option>
+                  <option value="2017">2023</option>
+                  <option value="2017">2022</option>
+                  <option value="2017">2021</option>
+                  <option value="2017">2020</option>
+                  <option value="2017">2019</option>
+                  <option value="2018">2018</option>
+                  <option value="2017">2017</option>
+                  <option value="2016">2016</option>
+                  <option value="2015">2015</option>
+                  <option value="2014">2014</option>
+                  <option value="2013">2013</option>
+                  <option value="2012">2012</option>
+                  <option value="2011">2011</option>
+                  <option value="2010">2010</option>
+                  <option value="2009">2009</option>
+                  <option value="2008">2008</option>
+                  <option value="2007">2007</option>
+                  <option value="2006">2006</option>
+                  <option value="2005">2005</option>
+                  <option value="2004">2004</option>
+                  <option value="2003">2003</option>
+                  <option value="2002">2002</option>
+                  <option value="2001">2001</option>
+                  <option value="2000">2000</option>
+                  <option value="1999">1999</option>
+                  <!--option value="1998">1998</option-->
+                </select>
+                &nbsp;&nbsp;&nbsp; </div>
+            </div>
+            <div class="linebreak"></div>
+            <div id="div_sex_m_f">
+              <p><b>Sexo:</b> <span class="form_err" id="sex_m_f_check">Ingrese
+                  el sexo</span></p>
+              <input id="sex_m" name="sex_m_f" value="sex_m" type="radio"> <label
+                for="sex_m">niño</label>&nbsp;&nbsp;&nbsp; <input id="sex_f" name="sex_m_f"
+                value="sex_f" type="radio"> <label for="sex_f">niña</label> </div>
+            <div class="linebreak"></div>
+            <div class="radio_buttons" id="radio_en_drop_or_direct">
+              <div class="inline_blk"> <input checked="checked" id="height_eng_direct"
+                  name="height_eng_drop_or_direct" value="height_eng_direct" type="radio">
+                <label for="height_eng_direct">Estatura: pulgadas</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+              <div class="inline_blk"> <input id="height_eng_drop" name="height_eng_drop_or_direct"
+                  value="height_eng_drop" type="radio"> <label for="height_eng_drop">Estatura:
+                  pies, pulgadas, fracciones de una pulgada</label> </div>
+            </div>
+            <div id="div_height_eng_direct">
+              <p><b>Estatura</b>, redondeada al 0.1 de pulgada más cercana: <span
+                  class="form_err" id="height_check_eng_direct"> Ingrese la
+                  estatura</span></p>
+              <input pattern="[0-9]" maxlength="6" name="height_inch_direct" id="height_inch_direct"
+                type="text"> <label for="height_inch_direct">pulgadas</label> </div>
+            <div id="div_height_eng_drop">
+              <p><b>Estatura</b>, redondeada al 1/8 más próxima pulgada: <span
+                  class="form_err" id="height_check_eng"> Ingrese la estatura</span></p>
+              <label for="height_feet">pies</label>
+              <select name="height_feet" id="height_feet">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+              </select>
+              &nbsp;&nbsp;&nbsp; <label for="height_inches">pulgadas</label>
+              <select name="height_inches" id="height_inches">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+              </select>
+              &nbsp;&nbsp;&nbsp; <label for="height_fraction_inches">fracciones
+                de pulgadas</label>
+              <select name="height_fraction_inches" id="height_fraction_inches">
+                <option value="0">0</option>
+                <option value="0.125">1/8</option>
+                <option value="0.25">1/4</option>
+                <option value="0.375">3/8</option>
+                <option value="0.5">1/2</option>
+                <option value="0.625">5/8</option>
+                <option value="0.75">3/4</option>
+                <option value="0.875">7/8</option>
+              </select>
+              <p>(12 pulgadas = 1 pie; ejemplo: 4 pies, 5 1/2 pulgadas)</p>
+            </div>
+            <div id="linebreak_eng" class="linebreak"></div>
+            <div class="radio_buttons" id="radio_en_weight_direct_or_drop">
+              <div class="inline_blk"> <input checked="checked" id="weight_eng_direct"
+                  name="weight_eng_direct_or_drop" value="weight_eng_direct" type="radio">
+                <label for="weight_eng_direct">Peso: Libras</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+              <div class="inline_blk"> <input id="weight_eng_drop" name="weight_eng_direct_or_drop"
+                  value="weight_eng_drop" type="radio"> <label for="weight_eng_drop">Peso:
+                  Libras, fracciones</label> </div>
+            </div>
+            <div id="div_weight_eng_direct">
+              <p><b>Peso</b> (lugares decimales permitidos) <span class="form_err"
+                  id="weight_check_eng_direct"> Ingrese el peso</span></p>
+              <div class="inline_blk"> <input pattern="[0-9]" maxlength="5" name="weight_lbs_direct"
+                  id="weight_lbs_direct" type="text"> <label for="weight_lbs_direct">libras</label>&nbsp;&nbsp;&nbsp;
+                </div> </div>
+            <div id="div_weight_eng">
+              <p><b>Peso (libras)</b>, redondeado al 1/4 (.25) de libra más
+                cercana: <span class="form_err" id="weight_check_eng"> Ingrese
+                  el peso</span></p>
+              <div class="inline_blk"> <input pattern="[0-9]" maxlength="3" name="weight_pounds"
+                  id="weight_pounds" type="text"> <label for="weight_pounds">libras</label>&nbsp;&nbsp;&nbsp;
+                </div>
+              <div class="inline_blk">
+                <select name="weight_fractions_pounds" id="weight_fractions_pounds">
+                  <option value="0">0</option>
+                  <option value="0.25">1/4</option>
+                  <option value="0.5">1/2</option>
+                  <option value="0.75">3/4</option>
+                </select>
+                <label for="weight_fractions_pounds">fracciones de una libra</label>
+              </div>
+              <p>(8 onzas = 1/2 libras; ejemplo: 75 3/4 libras)</p>
+            </div>
+            <!-- ######### METRIC ######### -->
+            <div id="div_height_metr">
+              <p><b>Estatura</b>, redondeado al 0.1 cm más cercano: <span class="form_err"
+                  id="height_check_metr"> Elija estatura:</span></p>
+              <input pattern="[0-9]" maxlength="5" name="heght_cm" id="height_cm"
+                type="text"> <label for="height_cm">cm</label> </div>
+            <div class="linebreak"></div>
+            <div id="div_weight_metr">
+              <p><b>Peso (en kg)</b>, redondeado al 0.1 kg más cercano: <span class="form_err"
+                  id="weight_check_metr"> Elija peso</span></p>
+              <input pattern="[0-9]" maxlength="5" name="weight_kg" id="weight_kg"
+                type="text"> <label for="weight_kg">kg</label>
+              <p></p>
+            </div>
+            <div style="text-align:center;"> <button id="button_calculate" type="button"
+                class="btn btn-primary">Calcular</button> </div>
+          </form>
+          <!-- ./FORM --> </div>
+        <!-- ./calculator_form_wrapper -->
+        <!-- ########################## RESULTS####################################- -->
+        <div id="calculator_result_wrapper">
+          <h4>Información ingresada</h4>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <p><b>Edad <small>(al momento de medición): </small></b><span id="age_years"></span><span
+                  id="age_months"></span></p>
+              <p><b>Sexo: </b><span id="sex_m_f"></span></p>
+              <p class="age_by_dates"><b>Fecha de nacimiento: </b><span id="dob_full_str"></span></p>
+            </div>
+            <div class="col-md-6">
+              <p class="english_inputs"><b>Altura: </b><span id="height_feet_r"></span>
+                <span id="height_inches_r"></span> pulgadas</p>
+              <p class="english_inputs"><b>Peso: </b><span id="totalWeightPounds"></span>
+                libras</p>
+              <p class="metric_inputs"><b>Altura: </b><span id="height_cm_r"></span>
+                cm</p>
+              <p class="metric_inputs"><b>Peso: </b><span id="weight_kgs"></span>
+                kg</p>
+              <p class="age_by_dates"><b>Fecha de medición: </b><span id="dom_full_str"></span></p>
+            </div>
+          </div>
+          <div class="linebreak col-md-12"></div>
+          <p class="data_potential_err">❗ El IMC calculado se encuentra muy
+            fuera del rango de los valores de un peso saludable. Si estos
+            valores están correctamente ingresados en cuanto a edad, peso y
+            altura, lo siguiente muestra los valores calculados para este niño.</p>
+          <h4>Resultados</h4>
+          <p>Según los valores ingresados <b>el resultado de IMC es <span class="bmi_no"></span></b>.
+          </p>
+          <p style="width: 647px;">El valor del IMC para edad indica que se
+            encuentra en el <b> <span class="bmi_percentile"></span> </b>
+            para la edad de <span class="dom_years"></span> <span class="dom_months"></span>
+            .</p>
+          <p style="width: 647px;">Lo cual significa que <b> <span class="bmi_conclusion"></span></b><span
+              class="bmi_text"></span></p>
+          <div>
+            <div id="yellowbox"> <img src="https://www.cdc.gov/healthyweight/bmi/widget/img/yellow.jpg"
+                alt="bajo peso &lt; 5 %" width="15" height="15">&nbsp;bajo peso
+              &lt; 5 %</div>
+            <div id="greenbox"> <img src="https://www.cdc.gov/healthyweight/bmi/widget/img/green.jpg"
+                alt="peso saludable entre 5 % y 85 %" width="15" height="15">&nbsp;peso
+              saludable entre 5 % y 85 %</div>
+            <div id="orangebox"> <img src="https://www.cdc.gov/healthyweight/bmi/widget/img/orange.jpg"
+                alt="sobrepeso entre  85 % y 95 %" width="15" height="15">&nbsp;sobrepeso
+              entre 85 % y 95 %</div>
+            <div id="redbox"> <img src="https://www.cdc.gov/healthyweight/bmi/widget/img/red.png"
+                alt="obeso ≥95 %" width="15" height="15">&nbsp;obeso ≥95 %</div>
+          </div>
+          <p>&nbsp;</p>
+          <p><br>
+          </p>
+          <p>&nbsp;</p>
+          <div style="text-align:center;"> <button id="button_calculate_again_spanish"
+              type="button" class="btn btn-primary">Calcule de Nuevo</button>
+            <p>&nbsp;</p>
+          </div>
+        </div>
+        <!-- ./calculator_result_wrapper --> </div>
+    </div>
+    <!--/mount_point_div-->
+    <!--/spanish disclaimer-->
+    <!--End Widget-->
+    <script src="./JS/percentiles/tp-widget-common.js"></script>
+    <script src="./JS/percentiles/jquery-1.11.2.min.js"></script>
+    <script src="./JS/percentiles/bootstrap.min.js"></script>
+    <script src="./JS/percentiles/moment.min.js"></script>
+    <script>
+				window.widgetData = {}
+				
+					
+				
+				$('#button_calculate_again_spanish').on('click', function(event) {
+					$('#ChildBMI_Form')[0].reset();
+					$('#calculator_result_wrapper').hide();
+					$('#calculator_form_wrapper').show();
+					$('#lang-switch').show();
+					$('#div_dob_dom').hide();
+					$('#div_height_eng_drop').hide();
+					$('#div_height_eng_direct').show();
+					$('#div_age_y_m').show();
+					$('.bmi_text').empty();
+					$('.data_potential_err').hide();
+					window.widgetData = {}
+					  var eng_or_metr2 = window.sessionStorage.getItem('eng_or_metr')
+					  if (eng_or_metr2 === 'metric') {
+						$('#div_height_eng_direct').hide();
+						//console.log('session value is metric')
+					  }
+					//cdcMetrics.trackEvent('CalculateAgainButton','Calculate again button - spanish');
+				})
+				
+				
+				
+				
+			</script>
+    <script src="./JS/percentiles/widget-calculator.js"></script>
+    <script src="./JS/percentiles/widget-calculator-both.js"></script>
+    <script src="./JS/percentiles/bmi_calc.js"></script>
+    <script src="./JS/percentiles/widget-result.js"></script>
+    <script src="./JS/percentiles/widget-result-spanish.js"></script>
+    <script>
+
+
+var mount_point_div = $('#mount_point_div')
+
+var english_inputs_div = $('#english-widget').detach()
+
+var spanish_inputs_div = $('#spanish-widget').detach()
+
+var mount_spanish_english_switch = $('#mount_spanish_english_switch')
+
+
+if ( mount_spanish_english_switch.val() === 'spanish_inputs_val') {
+  //console.log('spanish')
+//if (typeof(Storage) !== "undefined") { window.sessionStorage.setItem('eng_or_span','span') }
+  mount_point_div.append(spanish_inputs_div)
+  widget_calculator_both($, moment)
+  $('#widget-title').text('Calculadora del percentil del IMC en niños y adolescentes')
+  $('.eng-content').hide()
+  $('.esp-content').show()
+ // cdcMetrics.trackEvent('LanguageDropDown','initial view was spanish');
+
+} else {
+  //console.log('english')
+//if (typeof(Storage) !== "undefined") { window.sessionStorage.setItem('eng_or_span','eng') }
+  mount_point_div.append(english_inputs_div)
+  widget_calculator_both($, moment)
+  $('#widget-title').text('Calculadora del percentil del IMC en niños y adolescentes')
+  $('.esp-content').hide()
+  $('.eng-content').show()
+  
+ // cdcMetrics.trackEvent('LanguageDropDown','initial view was english');
+
+}// ./if ( mount_spanish_english_switch.val() === 'english_inputs_val')
+
+
+mount_spanish_english_switch.on('change', function(ev) {
+
+  if( $(this).val() === 'spanish_inputs_val') {
+	// spanish inputs  
+	english_inputs_div.detach()
+    mount_point_div.append(spanish_inputs_div)
+	widget_calculator_both($, moment)
+	$('#widget-title').text('Calculadora del percentil del IMC en niños y adolescentes')
+	$('.eng-content').hide()
+ 	$('.esp-content').show()
+	cdcMetrics.trackEvent('LanguageToggle','switched to spanish version');
+	
+  } else {
+	// english inputs
+    spanish_inputs_div.detach()
+    mount_point_div.append(english_inputs_div)
+	widget_calculator_both($, moment) 
+	$('#widget-title').text('Calculadora del percentil del IMC en niños y adolescentes')
+    cdcMetrics.trackEvent('LanguageToggle','switched to english version');
+    $('.esp-content').hide()
+  	$('.eng-content').show()
+
+  }// ./if( $(this).val() === 'english_inputs_val')
+
+})// ./mount_spanish_english_switch.on('change', function(ev
+
+
+
+
+</script> <script>
+
+$(document).ready(function () {	
+
+	$("#widgetCode").hide();
+	$("#widgetWhatIs").hide();
+	$("#widgetDisclaimer").hide();
+	$("#widgetInfo").hide();
+	$(".btn-return").hide();
+	
+	$(".btn-return").click(function () {
+	$('#calculator_form_wrapper').show();
+	$(".btn-group").show();
+	$("#widgetCode").hide();
+	$("#widgetDisclaimer").hide();
+	$("#widgetInfo").hide();
+	$(".btn-return").hide();
+	$('#lang-switch').show();
+});
+
+
+	
+	//alert("ID: "+buttonid);
+	
+	if(buttonid == "embedbutton") {
+		$('#calculator_result_wrapper').hide();
+		$('#calculator_form_wrapper').hide();
+		$(".btn-group").hide();
+	$("#widgetCode").show();
+	$(".btn-return").show();
+	$("#widgetDisclaimer").hide();
+	$("#widgetInfo").hide();
+	$('#lang-switch').hide();
+	cdcMetrics.trackEvent('EmbedButton','embed button clicked');
+	}
+	else if(buttonid == "disclaimerbutton"){
+	$('#calculator_result_wrapper').hide();
+	$('#calculator_form_wrapper').hide();
+	$(".btn-group").hide();
+	$("#widgetCode").hide();
+	
+	//Check if English or Spanish	
+	if ( mount_spanish_english_switch.val() === 'spanish_inputs_val') {
+		$("#widgetDisclaimer").show();
+		$('#english-disclaimer').hide()
+  		$('#spanish-disclaimer').show()
+	} else {
+		$("#widgetDisclaimer").show();
+ 		$('#spanish-disclaimer').hide()	
+  		$('#english-disclaimer').show()
+	}	
+	
+	
+	
+	$(".btn-return").show();
+	$("#widgetInfo").hide();
+	$('#lang-switch').hide();
+	cdcMetrics.trackEvent('DisclaimerButton','disclaimer button clicked');
+	}
+	else if (buttonid == "infobutton"){
+	$('#calculator_result_wrapper').hide();
+	$('#calculator_form_wrapper').hide();
+	$(".btn-group").hide();
+	$("#widgetCode").hide();
+	$("#widgetDisclaimer").hide();
+	
+	//Check if English or Spanish	
+	if ( mount_spanish_english_switch.val() === 'spanish_inputs_val') {
+		$("#widgetInfo").show();
+		$('#english-info').hide()	
+  		$('#spanish-info').show()
+	} else {
+		$("#widgetInfo").show();
+ 		$('#spanish-info').hide()	
+  		$('#english-info').show()
+	}	
+	$(".btn-return").show();
+	$('#lang-switch').hide();
+	cdcMetrics.trackEvent('InfoButton','info button clicked');
+	}
+	else {
+	$('#calculator_form_wrapper').show();
+	$(".btn-group").show();
+	$("#widgetCode").hide();
+	$("#widgetDisclaimer").hide();
+	$("#widgetInfo").hide();
+	$(".btn-return").hide();
+	$('#lang-switch').show();
+		
+	}
+ 
+}); 
+}); 
+</script>
+  </body>
+</html>

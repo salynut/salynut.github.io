@@ -1,0 +1,43 @@
+.noInfoForPage {
+  display: none;
+  font-weight: bold;
+}
+.pageUL {
+  margin-left: 20px!important;
+}
+.age_by_dates, .metric_inputs {
+  display: none;
+}
+.child_obesity_95_to_97, .child_obesity_over_97 {
+  display: none;
+}
+.data_potential_err {
+  color: #CC0000;
+  display: none;
+}
+#legend {
+  display: inline-block;
+  padding-right: 15px;
+  font-size: .9em;
+  text-align: left;
+}
+#legend img{
+  vertical-align: middle;
+}
+#legend p{
+  margin: 4px;
+}
+.normal_weight, .over_weight {
+  display: none;
+}
+.linebreak {
+  width: 100%;
+  margin: 0 auto;
+
+  margin-top: 7px;
+  margin-bottom: 7px;
+  border-top: 1px dotted #BBB;
+}
+.img_wrap {
+  padding: 12px;
+}

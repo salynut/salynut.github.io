@@ -1,0 +1,50 @@
+.accessibleHide, .form_err {
+  display: none;
+}
+.form_err_age_diff, div#div_dob_dom, div#div_height_eng_drop {
+  display: none;
+}
+div#div_dob_dom {
+  padding: 0px 10px 0px 10px!important;
+}
+#button_calculate {
+  padding: 5px 10px 5px 10px!important;
+}
+.form_err {
+  color: #CC0000;
+}
+.errorBox {
+  background-color: #CC0000;
+  border: 1px solid #FFAAAA;
+}
+
+#div_dob, #div_dom, #div_sex_m_f, #div_height_eng_drop, #div_weight_eng, #div_age_y_m, #div_height_eng_direct, #div_weight_eng_direct {
+  padding: 4px;
+  margin: 4px;
+}
+
+#calculator_form_wrapper label {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+#calculator_form_wrapper input[type="radio"] {
+  vertical-align: top;
+}
+#calculator_form_wrapper input[type="text"] {
+  width: 80px;
+
+}
+#calculator_form_wrapper .radio_buttons>div {
+  display: inline-block;
+}
+#calculator_form_wrapper .linebreak {
+  width: 100%;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  border-top: 1px dotted #BBB;
+}
+.inline_blk {
+  display: inline-block;
+  padding: 1px;
+}

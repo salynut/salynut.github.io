@@ -1,0 +1,462 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <script type="text/javascript" src="https://www.salynut.com/JS/jquery.min%281%29.js"></script>
+    <link href="https://www.salynut.com/JS/css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+	
+	#crmCalculadoraPeso{
+		border:1px solid #000;
+		padding:10px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+      font-family: sans-serif;
+      font-weight: 200;
+      font-size: 12px!important;
+	}
+  .container{
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: flex;
+      -webkit-justify-content: space-between;
+      -moz-justify-content: space-between;
+      justify-content: space-between;
+  }
+	bascula{
+      margin-right: 3%;
+  }
+	.crmCalcText{
+		font-size:12px;
+	}
+	
+	#crmSendButton{
+		padding:10px;
+		background-color:#1d1b58;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		color:#FFF;
+		font-size:18px;
+		display:block;
+		margin-top:20px;
+		text-align:center;
+		width:75%;
+      text-decoration: none;
+	}
+	
+	#crmSendButton:hover{
+		background-color:#06C;
+	}
+	
+	.crmInput{
+		margin-bottom:15px;
+		font-size: 15px;
+	  	appearance: none;
+	  	box-shadow: none;
+		border:1px solid #CCC;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		height: 30px;
+    	width: 80%;
+		padding-left:5px;
+	}
+	
+	.crmSelect{
+		font-size: 15px;
+		border:1px solid #CCC;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		height: 30px;
+    	width: 80%;	
+	}
+	
+	.crmPesoImageContainer {
+		position: relative;
+		text-align: center;
+	}
+	
+	.crmPesoImageContainer > img {
+		margin: 20px auto 0;
+		width: 230px;
+	}
+	
+	#crmMiPeso {
+		color: #fff;
+		font-family: "VT323";
+		font-size: 72px;
+		display:block;
+		width:100%;
+		text-align:center;
+		position: absolute;
+		top: 40px;
+	}
+
+	.crmKGLeyend {
+		color: #fff;
+		font-family: "VT323";
+		font-size: 30px;
+		display:block;
+		text-align:center;
+		position: absolute;
+		top: 95px;
+		width: 100%;
+	}
+	
+	.crmResultContainer{
+		display:none;
+      text-align: center;
+	}
+	
+	#crmResult{
+		background:#0097d8;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		padding:10px;
+		color:#FFF;
+		text-align:center;
+		font-size:17px;
+		line-height:25px;
+	}
+	
+	.crmBoxDecor{
+		height:15px !important;
+		width:18px !important;
+		margin-bottom:0 !important;
+		margin: 0 auto;
+	}
+	
+	.crmError{
+		display:none;
+		background:#FF6C6C;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		padding:10px;
+		color:#FFF;
+		text-align:center;
+		font-size:17px;
+		line-height:25px;
+		margin-top:10px;	
+	}
+	.col6.crmFormContent img {
+    	margin: 0 0 0 15px;
+    	width: 230px;
+	}
+	
+	@media (max-width: 767px) {
+  #crmCalculadoraPeso{
+      height: 780px!important;
+  }
+  .container{
+      -webkit-flex-direction: column;
+      -moz-flex-direction: column;
+      -ms-flex-direction: column;
+      -o-flex-direction: column;
+      flex-direction: column;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      justify-content: center;
+  }
+		.crmFormContent{
+			margin-top:15px;
+			text-align:center;
+		}
+		
+		.crmInput{
+			width:100%;
+		}
+		
+		.crmSelect{
+			width:100%;
+		}
+		
+		#crmSendButton{
+			width:95%;
+		}
+		.crmPesoImageContainer > img {
+			margin: 0 auto;
+			width: 250px;
+		}
+	#crmMiPeso {
+		color: #fff;
+		font-family: "VT323";
+		font-size: 80px;
+		display:block;
+		width:100%;
+		text-align:center;
+		position: absolute;
+		top: 18px;
+	}
+
+	.crmKGLeyend {
+		color: #fff;
+		font-family: "VT323";
+		font-size: 30px;
+		display:block;
+		text-align:center;
+		position: absolute;
+		top: 95px;
+		width: 100%;
+	}
+	#crmCalculadoraPeso .col6 {
+    	float: none!important;
+		width:99%!important;
+	}
+	.col6.crmFormContent img {
+		margin: 0 0 0 65px;
+		width: 230px;
+	}
+	}
+	@media (max-width: 479px) {
+	.col6.crmFormContent img {
+    	margin: 0;
+    	width: auto;
+      max-width: 100%;
+	}
+	
+	}
+					
+</style> </head>
+  <body>
+    <div id="crmCalculadoraPeso" style="height: auto; box-sizing: border-box;">
+      <div class="row container" style="margin:0;">
+        <div class="col6 bascula" style="width: 48%;">
+          <div class="crmPesoImageContainer"> <span id="crmMiPeso">0</span> <span
+              class="crmKGLeyend">kg</span> <img src="https://www.salynut.com/img/pesoimg.png"> </div>
+          <div class="crmResultContainer"> <img class="crmBoxDecor" src="https://www.salynut.com/img/boxdecor-blue.png">
+            <div id="crmResult"> Peso Ganado: <b><span id="crmPesoGanado"></span>
+                kg</b> <br>
+              Tu peso adecuado para la <b>semana <span id="crmWeek"></span></b>
+              de embarazo <b><span id="crmPesoAdecuado"></span> kg</b> </div>
+          </div>
+          <div class="crmError">
+            <p>Debes introducir un valor correcto</p>
+            <p>Peso mínimo 35kg | Peso Máximo 200kg</p>
+          </div>
+        </div>
+        <div class="col6 crmFormContent" style="width: 48%;">
+          <p class="crmCalcText">Peso previo al embarazo (kg)</p>
+          <input id="crmPesoPrevio" class="crmInput" min="35" max="200" type="number">
+          <p class="crmCalcText">Peso actual (kg)</p>
+          <input id="crmPesoActual" class="crmInput" min="35" max="200" type="number">
+          <p class="crmCalcText">Semana del embarazo</p>
+          <select id="crmSemana" name="crmSemana" class="crmSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <option value="36">36</option>
+            <option value="37">37</option>
+            <option value="38">38</option>
+            <option value="39">39</option>
+            <option value="40">40 +</option>
+          </select>
+          <p style="margin:0;"><a id="crmSendButton">Calcular</a></p>
+          <div style=""> &nbsp;&nbsp;&nbsp; <a href="https://www.salynut.com/"><br>
+            </a></div>
+          <div style="text-align: center;"><b><a href="https://www.salynut.com/">www.salynut.com</a></b>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+
+	$(document).ready(function(){
+	
+		$('#crmSendButton').click(	
+			function(){
+				
+				$( ".crmResultContainer" ).fadeOut( "fast", function() {});
+				$( ".crmError" ).fadeOut( "fast", function() {});
+				
+				var lpPesoPrevio = parseInt($('#crmPesoPrevio').val());
+				var lpPesoActual = parseInt($('#crmPesoActual').val());
+				var lpSemana = parseInt($('#crmSemana').val());
+				
+				if(isNaN(lpPesoPrevio) || lpPesoPrevio < 35 || lpPesoPrevio > 200 || isNaN(lpPesoActual) || lpPesoActual < 35 || lpPesoActual > 200){
+				
+					$( ".crmError" ).fadeIn( "slow", function() {});			
+				
+				}else{
+				
+					var lpPesoGanado = (lpPesoActual - lpPesoPrevio);
+					var lpPesoAdecuado = calculaRango(lpPesoPrevio, lpSemana);
+					
+					var lpSec = 0;
+					
+					function pesoCounter(){
+						
+						if(lpSec<=lpPesoActual){
+							$('#crmMiPeso').text(lpSec);
+						}
+						
+						++lpSec;	
+					};
+					
+					function setDeceleratingTimeout(factor, times){
+					  var internalCallback = function( t, counter )
+					  {
+						return function()
+						{
+						  if ( --t > 0 )
+						  {
+							window.setTimeout( internalCallback, ++counter * factor );
+							pesoCounter();
+						  }else{
+							 $( ".crmResultContainer" ).fadeIn( "slow", function() {});
+						  }
+						}
+					  }( times, 0 );
+					
+					  window.setTimeout( internalCallback, factor );
+					};
+		
+					setDeceleratingTimeout(1, (lpPesoActual+2) );
+									
+					$('#crmPesoGanado').text(lpPesoGanado);	
+					$('#crmWeek').text(lpSemana);
+					$('#crmPesoAdecuado').text(lpPesoAdecuado);
+				
+				}
+			}
+		);
+	
+	});
+
+	function calculaRango(peso, semana){
+		
+		switch (true) {
+			case (semana < 8):
+				var lpPesoAnt = peso;
+				var lpPesoPos = peso;
+				break;
+			case (semana > 7 && semana < 11):
+				var lpPesoAnt = peso;
+				var lpPesoPos = peso + 1;
+				break;
+			case (semana > 10 && semana < 14):
+				var lpPesoAnt = peso + 1;
+				var lpPesoPos = peso + 2;
+				break;
+			case (semana > 13 && semana < 16):
+				var lpPesoAnt = peso + 2;
+				var lpPesoPos = peso + 3;
+				break;
+			case (semana > 15 && semana < 18):
+				var lpPesoAnt = peso + 3;
+				var lpPesoPos = peso + 4;
+				break;
+			case (semana > 17 && semana < 19):
+				var lpPesoAnt = peso + 4;
+				var lpPesoPos = peso + 5;
+				break;
+			case (semana == 19):
+				var lpPesoAnt = peso + 4;
+				var lpPesoPos = peso + 6;
+				break;
+			case (semana > 19 && semana < 22):
+				var lpPesoAnt = peso + 5;
+				var lpPesoPos = peso + 7;
+				break;
+			case (semana == 22):
+				var lpPesoAnt = peso + 6;
+				var lpPesoPos = peso + 8;
+				break;
+			case (semana == 23):
+				var lpPesoAnt = peso + 6;
+				var lpPesoPos = peso + 9;
+				break;
+			case (semana == 24):
+				var lpPesoAnt = peso + 7;
+				var lpPesoPos = peso + 9;
+				break;
+			case (semana == 25):
+				var lpPesoAnt = peso + 7;
+				var lpPesoPos = peso + 10;
+				break;
+			case (semana == 26):
+				var lpPesoAnt = peso + 8;
+				var lpPesoPos = peso + 10;
+				break;
+			case (semana == 27):
+				var lpPesoAnt = peso + 8;
+				var lpPesoPos = peso + 11;
+				break;
+			case (semana == 28):
+				var lpPesoAnt = peso + 9;
+				var lpPesoPos = peso + 11;
+				break;
+			case (semana > 28 && semana < 31):
+				var lpPesoAnt = peso + 9;
+				var lpPesoPos = peso + 12;
+				break;
+			case (semana == 31):
+				var lpPesoAnt = peso + 9;
+				var lpPesoPos = peso + 13;
+				break;
+			case (semana == 32):
+				var lpPesoAnt = peso + 10;
+				var lpPesoPos = peso + 13;
+				break;
+			case (semana > 32 && semana < 35):
+				var lpPesoAnt = peso + 10;
+				var lpPesoPos = peso + 14;
+				break;
+			case (semana > 34 && semana < 39):
+				var lpPesoAnt = peso + 11;
+				var lpPesoPos = peso + 14;
+				break;
+			case (semana > 38 && semana < 41):
+				var lpPesoAnt = peso + 11;
+				var lpPesoPos = peso + 15;
+				break;
+		} 
+		
+		if(lpPesoAnt == lpPesoPos){
+			var lpResult = 'es de '+lpPesoAnt;
+		}else{
+			var lpResult = 'está entre '+lpPesoAnt+' y '+lpPesoPos;
+		}
+		return lpResult;		
+	}
+
+</script> 
+<script src="https://www.drv.tw/inc/wd.js?s=mzo9j5bgysmcikso48rubw"></script></body>
+</body>
+</html>
