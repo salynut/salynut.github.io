@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Calculadora de Grasa Corporal</title>
-</head>
-<script src="./JS/grasa-2.js"></script>
-<body>
-	<h1>Calculadora de Grasa Corporal</h1>
-	<p>Introduce los datos necesarios para calcular tu grasa corporal:</p>
-	<form>
-		<label for="altura">Altura (cm):</label>
-		<input type="number" id="altura" name="altura" required><br><br>
-		
-		<label for="peso">Peso (kg):</label>
-		<input type="number" id="peso" name="peso" required><br><br>
-		
-		<label for="edad">Edad:</label>
-		<input type="number" id="edad" name="edad" required><br><br>
-		
-		<label for="genero">Género:</label>
-		<select id="genero" name="genero" required>
-			<option value="hombre">Hombre</option>
-			<option value="mujer">Mujer</option>
-		</select><br><br>
-		
-		<button type="button" onclick="calcular()">Calcular</button><br><br>
-		
-		<label for="resultado">Tu grasa corporal es:</label>
-		<input type="text" id="resultado" name="resultado" readonly>
-	</form>
-
-</body>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <title>Calculadora de Grasa Corporal</title>
+    <script src="./JS/grasa-2.js"></script>
+  </head>
+  <body>
+    <div id="rechner" style="box-shadow: 2px 2px 5px 2px #444444; padding:15px; margin:5px;
+width:360px; border-radius:15px; font-family: Verdana,Arial,'sans-serif'; fontsize:11px;">
+      <h1 style="    margin-top:0;padding-top:0;text-align:center;font-size:15px;font-
+weight:bold"><span style="font-family: Arial;">Calculadora de Grasa corporal</span></h1>
+      <hr style="margin-bottom:10px;" color="silver" size="1">
+      <div id="cover">
+        <form name="fp">
+          <p>Introduce los datos necesarios para calcular tu grasa corporal:</p>
+          <label for="altura">Altura (cm):&nbsp;&nbsp; </label><input id="altura"
+            name="altura" required="" type="number"><br>
+          <br>
+          <label for="peso">Peso (kg):&nbsp;&nbsp;&nbsp; &nbsp; </label><input
+            id="peso" name="peso" required="" type="number"><br>
+          <br>
+          <label for="edad">Edad:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp; </label><input id="edad" name="edad" required="" type="number"><br>
+          <br>
+          <label for="genero">Género: &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</label>
+          <select id="genero" name="genero" required="">
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+          </select>
+          <br>
+          <br>
+          <button type="button" onclick="calcular()">Calcular</button><br>
+          <br>
+          <label for="resultado">Tu grasa corporal es: <input id="resultado" name="resultado"
+              readonly="readonly" type="text">
+            <table class="main">
+              <colgroup><col class="w60"><col class="w60"></colgroup>
+              <tbody>
+              </tbody>
+            </table>
+            <br>
+          </label>
+          <div style="text-align: right;"><label for="resultado"> <a href="www.salnut.com"
+                target="_blank">www.salnut.com</a> </label></div>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
+
 
