@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico de Composición Corporal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e2e2e2;
+            border-radius: 5px;
+        }
+   /* Encabezado */
+#encabezado {
+    display: none;
+}
+
+#pie-pagina {
+    display: none;
+}
+
+/* Estilos específicos para impresión */
+@media print {
+    /* Elimina márgenes para aprovechar mejor el espacio */
+    body {
+        margin: 0;
+    }
+
+    /* Encabezado para impresión */
+    #encabezado {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #000;
+        padding: 10px 0;
+        display: block;
+        background-color: #f0f0f0;
+    }
+
+    /* Pie de página para impresión */
+    #pie-pagina {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid #000;
+        padding: 10px 0;
+        display: block;
+        background-color: #f0f0f0;
+    }
+
+    /* Asegura que el contenido no se superponga con encabezado/pie */
+    .container {
+        margin-top: 120px; /* Ajustar según el tamaño del encabezado */
+        margin-bottom: 60px; /* Ajustar según el tamaño del pie de página */
+    }
+
+    /* Ocultar elementos no necesarios en la impresión */
+    button {
+        display: none;
+    }
+}
+    </style>
+</head>
+ 
+<body>
+<!-- Encabezado -->
+    <div id="encabezado">
+        <h1>Informe de Composición Corporal</h1>
+    </div>
+    
+    
+    <h1>Diagnóstico de Composición Corporal</h1>
+    <div class="container">
+        <div class="form-group">
+            <label for="fecha">Fecha de Medición:</label>
+            <input type="date" id="fecha">
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre">
+        </div>
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido">
+        </div>
+        <div class="form-group">
+            <label for="edad">Edad (años):</label>
+            <input type="number" id="edad">
+        </div>
+        <div class="form-group">
+            <label for="sexo">Sexo:</label>
+            <select id="sexo">
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="peso">Peso (kg):</label>
+            <input type="number" id="peso" step="0.1">
+        </div>
+        <div class="form-group">
+            <label for="talla">Talla (cm):</label>
+            <input type="number" id="talla">
+        </div>
+        <div class="form-group">
+            <label for="brazo">Circunferencia de brazo (cm):</label>
+            <input type="number" id="brazo">
+        </div>
+        <div class="form-group">
+            <label for="cintura">Circunferencia de Cintura (cm):</label>
+            <input type="number" id="cintura">
+        </div>
+        <div class="form-group">
+            <label for="cadera">Circunferencia de Cadera (cm):</label>
+            <input type="number" id="cadera">
+        </div>
+        <div class="form-group">
+            <label for="grasaCorporal">Porcentaje de Grasa Corporal (%):</label>
+            <input type="number" id="grasaCorporal" step="0.1">
+        </div>
+        <div class="form-group">
+            <label for="nutricionista">Nutricionista:</label>
+            <input type="text" id="nutricionista">
+        </div>
+        <button onclick="generarInforme()">Generar Informe</button>
+        <button onclick="imprimirInforme()">Imprimir o Guardar en PDF</button>
+
+        <div id="resultado" class="results"></div>
+        <canvas id="imcChart" width="400" height="200"></canvas>
+    </div>
+
+ <!-- Pie de página -->
+    <div id="pie-pagina">
+        <p>Información Confidencial - Generado por [Nombre de la Empresa o Sistema]</p>
+    </div>
+    
+    <script src="JS/c-p.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>
+

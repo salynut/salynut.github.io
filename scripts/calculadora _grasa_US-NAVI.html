@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>calculadora grasa corporal</title>
+    <script src="./JS/grasa.js"></script>
+    
+  </head>
+  <body>
+    <div id="rechner" style="box-shadow: 2px 2px 5px 2px #444444; padding:15px; margin:5px;
+width:360px; border-radius:15px; font-family: Verdana,Arial,'sans-serif'; fontsize:11px;">
+      <h1 style="    margin-top:0;padding-top:0;text-align:center;font-size:15px;font-
+weight:bold"><span style="font-family: Arial;">Calculadora de Grasa corporal</span></h1>
+      <hr style="margin-bottom:10px;" size="1" color="silver">
+      <div id="cover">
+        <form name="fp">
+          <table class="main">
+            <colgroup><col class="w60"><col class="w60"></colgroup>
+            <tbody>
+              <tr style="height: 33px;">
+                <td style="height: 31px;">Sistema de medida</td>
+                <td>
+                  <select id="msf" onchange="msystem();">
+                    <option value="metric">Metrico (kg, cm)</option>
+                    <option value="us">US (lbs, inches)</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td style="height: 31px;">Sexo</td>
+                <td>
+                  <select id="sf">
+                    <option value="m">Masculino</option>
+                    <option value="f">Femenino</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Talla <span id="thf">(cm)</span></td>
+                <td><input id="hf"></td>
+              </tr>
+              <tr>
+                <td>Cuello <span id="tneck"> (cm)</span></td>
+                <td><input id="neck"></td>
+              </tr>
+              <tr>
+                <td>Cintura <span id="twaist">(cm)</span></td>
+                <td><input id="waist"></td>
+              </tr>
+              <tr>
+                <td>Caderas <span id="thips">(cm)</span></td>
+                <td><input id="hips"></td>
+              </tr>
+              <tr>
+                <td><button type="reset">Limpiar</button></td>
+                <td><button type="button" onclick="bfat();">Calcular</button></td>
+              </tr>
+              <tr>
+                <td>Su grasa corporal es: </td>
+                <td><input id="bf" class="op"></td>
+              </tr>
+              <tr>
+                <td>Diagnóstico: </td>
+                <td><input id="nbf" class="op"></td>
+              </tr>
+              <tr>
+                <td colspan="2" class="ac"> <br>
+                  Esta calculadora utiliza la formula de la Navy US
+                  <br>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+        <p style="  text-align: right;" size="10"> <a href="www.salnut.com" target="_blank">www.salnut.com</a></p>
+      </div>
+    </div>
+    <br>
+    <p></p>
+  </body>
+</html>
